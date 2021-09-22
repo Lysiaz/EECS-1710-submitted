@@ -1,2 +1,2 @@
 # EECS-1710-submitted
-exercises
+exercises and assignments
