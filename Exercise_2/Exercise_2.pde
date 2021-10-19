@@ -1,30 +1,37 @@
-color bgColor = color(66, 0, 25);
-float posX, posY;
-String message = "Hey, Exercise 1.";
+PImage img, img1, img2;
+
+float x = 300;
+float y = 300;
+float s = 150;
+float speed = 5;
 
 void setup() {
-  size(800, 600, P2D);
-  ellipseMode(CENTER);
-  frameRate(80);
-  background(bgColor);
+  size(1400, 700, P2D);
+  
+  img = loadImage("mapletree.png");
+  img1 = loadImage("mapleleaf.png");
+  img2 = loadImage("cute.png");
+  frameRate(40);
 }
 
 void draw() {
-  fill(random(0, 255), random(0, 255), random(0, 255));
-  stroke(235, 0, 214);
-  ellipse(mouseX, mouseY, 10, 10);
+  imageMode(CORNER);
+  image(img, 0, 0, width, height);
   
-  println(mousePressed);
-  if (mousePressed && (mouseButton == LEFT)) {
-    rectMode(CENTER);
-    fill(156, 0, 255);
-    stroke(0, 189, 237);
-    line(mouseX, mouseY, pmouseX, pmouseY);
-  } else if (mousePressed && (mouseButton == RIGHT)) {
-      text(message, mouseX, mouseY);
-      
-      
-  }
-      
- 
+  imageMode(CENTER);
+  for (int i=0; i<8; i++) {
+    image(img1, random(width), random(height), img.width/10, img.height/10);
 }
+  
+  imageMode(CORNER);
+  image(img2, x, y, s, s); 
+  x += speed;
+  
+  if (x > width || x < 0) {
+    speed *=-1;
+  }
+  
+  ellipse(mouseX, mouseY, 20, 20);
+  
+}  
+  
